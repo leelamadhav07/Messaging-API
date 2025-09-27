@@ -24,6 +24,7 @@ Supports **delivery status tracking** (sent, delivered) and real-time **SMS noti
 ---
 
 ## 📂 Project Structure
+```
 📂 Messaging-API/  
 │  
 ├── src/main/java/com/messaging/  
@@ -41,7 +42,7 @@ Supports **delivery status tracking** (sent, delivered) and real-time **SMS noti
 │   └── application.properties          # Twilio credentials & config  
 │  
 └── pom.xml                             # Maven dependencies  
-
+```
 ---
 
 ## ⚙️ Installation & Setup
@@ -128,4 +129,5 @@ This project is licensed under the MIT License.
 
 Developed by S. Leela Madhav ✨
 If you like this project, consider giving it a ⭐ on GitHub!
+
 
