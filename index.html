@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS Sender</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .response {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Send SMS</h2>
+    <form id="smsForm">
+      <input type="text" id="phone" placeholder="Enter phone number (+91...)" required />
+      <textarea id="message" rows="4" placeholder="Enter message..." required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div class="response" id="responseMsg"></div>
+  </div>
+
+  <script>
+    document.getElementById("smsForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const phone = document.getElementById("phone").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const responseDiv = document.getElementById("responseMsg");
+
+      try {
+        const res = await fetch("/api/sms/send", {   // ✅ relative path, no CORS issues
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            to_phn_no: phone,
+            mssg: message
+          })
+        });
+
+        const text = await res.text();
+        if (res.ok) {
+          responseDiv.style.color = "green";
+          responseDiv.innerText = text;
+        } else {
+          responseDiv.style.color = "red";
+          responseDiv.innerText = "Failed: " + text;
+        }
+      } catch (err) {
+        responseDiv.style.color = "red";
+        responseDiv.innerText = "Error connecting to server!";
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
