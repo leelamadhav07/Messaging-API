@@ -1,4 +1,4 @@
-# 📩 Messaging API - Spring Boot Backend
+# 📩 Messaging API 
 
 I developed a full-stack application that enables **admins** to send messages **only to the phone numbers of users registered in Twilio**.  
 Admins cannot check if the user has opened/read the message.  
@@ -57,7 +57,7 @@ Add your Twilio SID, Auth Token, and Twilio Phone Number in **application.proper
 ```
 twilio.account.sid=your-twilio-sid
 twilio.auth.token=your-twilio-auth-token
-twilio.phone.number=+1234567890
+twilio.phone.number=your-twilio-phone-number
 ```
 
 3. **Run the Application**
@@ -129,5 +129,6 @@ This project is licensed under the MIT License.
 
 Developed by S. Leela Madhav ✨
 If you like this project, consider giving it a ⭐ on GitHub!
+
 
 
