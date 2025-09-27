@@ -1,6 +1,6 @@
 # 📩 Messaging API - Spring Boot Backend
 
-A backend application that enables **admins** to send messages **only to users registered in Twilio**.  
+I developed a full-stack application that enables **admins** to send messages **only to the phone numbers of users registered in Twilio**.  
 Admins cannot check if the user has opened/read the message.  
 Supports **delivery status tracking** (sent, delivered) and real-time **SMS notifications** via Twilio.  
 
@@ -16,16 +16,15 @@ Supports **delivery status tracking** (sent, delivered) and real-time **SMS noti
 ---
 
 ## 🛠️ Tech Stack
+- **Frontend:** HTML, CSS, JS
 - **Backend:** Java, Spring Boot  
-- **Database:** H2 (in-memory, dev mode)  
 - **SMS Integration:** Twilio API  
 - **Build Tool:** Maven  
 - **Testing Tool:** Postman  
-
 ---
 
 ## 📂 Project Structure
-Messaging-API/  
+📂 Messaging-API/  
 │  
 ├── src/main/java/com/messaging/  
 │   ├── controller/  
@@ -37,6 +36,8 @@ Messaging-API/
 │   └── SpringSmsSenderApplication.java # Main Spring Boot entry point  
 │  
 ├── src/main/resources/  
+│   ├── static/  
+│   │   └── index.html                  # Frontend entry point  
 │   └── application.properties          # Twilio credentials & config  
 │  
 └── pom.xml                             # Maven dependencies  
@@ -58,14 +59,24 @@ twilio.auth.token=your-twilio-auth-token
 twilio.phone.number=+1234567890
 ```
 
-3. **Run the backend**
+3. **Run the Application**
 ```
 mvn spring-boot:run
 ```
 
 Backend will start at 👉 ```http://localhost:8080```
+Frontend (served from static/index.html) will be available at 👉
+```http://localhost:8080/index.html```
 
-4. **Test APIs using Postman**
+4. **Using the Application**
+
+Open the frontend in your browser at ```http://localhost:8080/index.html```
+
+Use the UI to send SMS messages to registered Twilio users
+
+Message delivery status (sent, delivered) is tracked in real time
+
+5. **Alternative:** **Test APIs using Postman**
 
 Send SMS → **POST /api/sms/send**
 
@@ -117,3 +128,4 @@ This project is licensed under the MIT License.
 
 Developed by S. Leela Madhav ✨
 If you like this project, consider giving it a ⭐ on GitHub!
+
